@@ -8,10 +8,10 @@ import reducer from './reducers';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import {purple, white} from './utils/colors';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import MainNavigator from './components/MainNavigator';
+import Live from './components/Live';
 
 // custom StatusBar:
 function AppStatusBar({backgroundColor, ...props}) {
@@ -27,8 +27,6 @@ const Tab =
     ? createBottomTabNavigator()
     : createMaterialTopTabNavigator();
 
-const Drawer = createDrawerNavigator();
-
 export default function App() {
   return (
     <Provider store={createStore(reducer)}>
@@ -42,11 +40,11 @@ export default function App() {
                 let icon;
                 if (route.name === 'Add Entry') {
                   icon = (
-                    <FontAwesome name="plus-square" size={size} color={color} />
+                    <FontAwesome name='plus-square' size={size} color={color} />
                   );
                 } else if (route.name === 'History') {
                   icon = (
-                    <Ionicons name="ios-bookmarks" size={size} color={color} />
+                    <Ionicons name='ios-bookmarks' size={size} color={color} />
                   );
                 } else if (route.name === 'Live') {
                   icon = (
@@ -81,6 +79,7 @@ export default function App() {
           >
             <Tab.Screen name="Add Entry" component={AddEntry} />
             <Tab.Screen name="History" component={MainNavigator} />
+            <Tab.Screen name="Live" component={Live} />
           </Tab.Navigator>
         </NavigationContainer>
       </View>
