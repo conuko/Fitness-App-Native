@@ -9,6 +9,7 @@ import MetricCard from './MetricCard'
 // import UdaciFitnessCalendar from 'udacifitness-calendar-fix'
 import {Agenda as UdaciFitnessCalendar } from 'react-native-calendars'
 import AppLoading from 'expo-app-loading'
+
 class History extends Component {
   state = {
       ready: false,
@@ -37,10 +38,10 @@ class History extends Component {
                 {today}
             </Text>
         </View>
-        : <TouchableOpacity onPress={()=> this.props.navigation.navigate('Entry Detail',
+        : <TouchableOpacity onPress={()=> this.props.navigation.navigate('Details',
         { entryId: dateKey })}>
-                <MetricCard metrics={metrics} />
-            </TouchableOpacity>}
+            <MetricCard metrics={metrics} />
+          </TouchableOpacity>}
     </View>
   )
   onDayPress = (day) => {

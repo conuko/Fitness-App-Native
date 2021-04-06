@@ -14,7 +14,8 @@ import TextButton from './TextButton';
 import {submitEntry, removeEntry} from '../utils/api';
 import {useDispatch, useSelector} from 'react-redux';
 import {addEntry} from '../actions';
-import {purple, white} from '../utils/colors';
+import { purple, white } from '../utils/colors';
+import {CommonActions, useLinkProps} from '@react-navigation/native';
 
 function SubmitBtn({onPress}) {
   return (
@@ -28,7 +29,7 @@ function SubmitBtn({onPress}) {
   );
 }
 
-export default function AddEntry() {
+export default function AddEntry(props) {
   const [state, setState] = useState({
     run: 0,
     bike: 0,
@@ -88,6 +89,7 @@ export default function AddEntry() {
     });
 
     // Navigate to home
+    toHome();
 
     // Save to 'DB':
     submitEntry({key, entry});
@@ -106,9 +108,17 @@ export default function AddEntry() {
     );
 
     // Route to Home
+    toHome();
 
     // Update 'DB':
     removeEntry(key);
+  };
+
+  const toHome = () => {
+    props.navigation.dispatch({
+      ...CommonActions.goBack(),
+      source: 'AddEntry'
+    });
   };
 
   const metaInfo = getMetricMetaInfo();
