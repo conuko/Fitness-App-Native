@@ -5,10 +5,10 @@ import AddEntry from './components/AddEntry';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import reducer from './reducers';
-import History from './components/History';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createMaterialTopTabNavigator} from "@react-navigation/material-top-tabs";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import {purple, white} from './utils/colors';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import MainNavigator from './components/MainNavigator';
@@ -26,6 +26,8 @@ const Tab =
   Platform.OS === 'ios'
     ? createBottomTabNavigator()
     : createMaterialTopTabNavigator();
+
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
